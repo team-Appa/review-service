@@ -9,7 +9,29 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    // invoke get request func
+    this.getComments();
+  }
 
+  // get request to server
+  getComments() {
+    fetch('http://localhost:3001/api/reviews', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accpet': 'application/json'
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          reviews: data
+        });
+      })
+      .catch(err => {
+        console.log('Error making GET request ', err);
+      });
+  }
 
   render() {
     var { reviews } = this.state;
