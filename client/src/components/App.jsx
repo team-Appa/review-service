@@ -1,18 +1,23 @@
 import React from 'react';
+import ReviewList from './ReviewList.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: []
-    }
+      reviews: []
+    };
   }
 
 
+
   render() {
+    var { reviews } = this.state;
     return (
-      <div>Hello World</div>
-    )
+      <div>
+        <ReviewList reviews={reviews} />
+      </div>
+    );
   }
 }
 
