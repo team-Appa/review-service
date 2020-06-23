@@ -80,7 +80,7 @@ const StarNumber = styled.p`
 const ReviewListEntry = (props) => {
   var { review } = props;
   var time = moment(review.timestamp).fromNow();
-  console.log(FaThumbsUp);
+
 
   return (
     <Section>
