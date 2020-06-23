@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import StarRatings from 'react-star-ratings';
+import { FaThumbsUp } from 'react-icons/fa';
 
 const Section = styled.div`
   border-top: 1px solid #ccc;
@@ -44,7 +45,7 @@ const Helpful = styled.div`
 
 const Thumbs = styled.div`
   flex: 0 auto;
-  width: 100px;
+  width: 150px;
   text-align: center;
   padding-right: 10px;
 `;
@@ -58,7 +59,8 @@ const Button = styled.button`
   font-weight: bold;
   border: 1px solid #ccc;
   &:hover {
-    color: red;
+    color: #cd2418;
+    background-color: #f2f2f2;
   }
 `;
 
@@ -78,6 +80,7 @@ const StarNumber = styled.p`
 const ReviewListEntry = (props) => {
   var { review } = props;
   var time = moment(review.timestamp).fromNow();
+  console.log(FaThumbsUp);
 
   return (
     <Section>
@@ -108,14 +111,14 @@ const ReviewListEntry = (props) => {
           Was this review helpful to you?
         </Helpful>
         <Thumbs>
-          <Button>{review.like}</Button>
-          <Button>{review.dislike}</Button>
+          <Button> < FaThumbsUp /> {review.like}</Button>
+          <Button>
+            < FaThumbsUp style={{transform: 'rotate(180deg)'}}/> {review.dislike}</Button>
         </Thumbs>
         <Flag>
           <a style={{color: '#cd2418'}} href='#'>Flag this review</a>
         </Flag>
       </Wrapper>
-
 
     </Section>
   );
@@ -123,14 +126,3 @@ const ReviewListEntry = (props) => {
 
 export default ReviewListEntry;
 
-
-
-
-
-// going to need react.star component imported
-
-// figure out how to use icons
-
-// use moment to display timestamp
-
-// font family : montserratbold,'Arial Black',Arial,Helvetica,sans-serif;
