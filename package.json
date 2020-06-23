@@ -25,6 +25,7 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "babel-loader": "^8.1.0",
+    "babel-plugin-styled-components": "^1.10.7",
     "eslint-config-hackreactor": "github:reactorcore/eslint-config-hackreactor",
     "jest": "^26.0.1",
     "webpack": "^4.43.0",
@@ -33,11 +34,14 @@
   "dependencies": {
     "express": "^4.17.1",
     "faker": "^4.1.0",
+    "moment": "^2.27.0",
     "mongoose": "^4.13.20",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-star-ratings": "^2.3.0",
+    "styled-components": "^5.1.1"
   }
 }

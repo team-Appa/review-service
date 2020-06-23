@@ -19,7 +19,7 @@ class App extends React.Component {
     fetch('http://localhost:3001/api/reviews', {
       headers: {
         'Content-Type': 'application/json',
-        'Accpet': 'application/json'
+        'Accept': 'application/json'
       },
     })
       .then(res => res.json())
