@@ -1,11 +1,55 @@
+.container {
+  border-top: 1px solid #ccc;
+  align-items: center;
+  font-family: montserratbold, Arial;
+  padding: 10px 0 10px;
+  margin: 0 auto;
+  width: auto;
+  max-width: 1500px;
+  font-weight: bold;
+}
+
+.helpful {
+  flex: 0 auto;
+  width: 250px;
+}
+
+.thumb {
+  flex: 0 auto;
+  width: 100px;
+  text-align: center;
+  padding-right: 10px;
+}
+
+.flag a {
+  flex: 1;
+  color: red;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 15px 0 15px;
+  align-items: center;
+}
+
+.review-flag {
+  color: red;
+  border: 1px solid black;
+}
+
+.hi {
+  color: purple;
+}
+/*
+
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import StarRatings from 'react-star-ratings';
-import { FaThumbsUp } from 'react-icons/fa';
 
 const Section = styled.div`
   border-top: 1px solid #ccc;
+  item-align: center;
   font-family: montserratbold, Arial;
   padding: 10px 0 10px;
   margin: 0 auto;
@@ -18,7 +62,6 @@ const Comment = styled.div`
   flex: 1;
   margin-right: 50px;
   font-weight: 200;
-  padding-right: 15px;
 `;
 
 const CommentOwner = styled.div`
@@ -45,7 +88,7 @@ const Helpful = styled.div`
 
 const Thumbs = styled.div`
   flex: 0 auto;
-  width: 150px;
+  width: 100px;
   text-align: center;
   padding-right: 10px;
 `;
@@ -59,39 +102,25 @@ const Button = styled.button`
   font-weight: bold;
   border: 1px solid #ccc;
   &:hover {
-    color: #cd2418;
-    background-color: #f2f2f2;
+    color: red;
   }
 `;
 
 const Flag = styled.div`
   flex: 1;
-`;
-
-const StarNumber = styled.p`
-  border: 1px solid black;
-  border-radius: 15%;
-  padding: 1px 5px;
-  color: white;
-  background-color: black;
-  margin: 0 15px 0 5px;
+  color: red;
 `;
 
 const ReviewListEntry = (props) => {
   var { review } = props;
   var time = moment(review.timestamp).fromNow();
-  console.log(FaThumbsUp);
 
   return (
     <Section>
 
-      <Wrapper>
-        <StarRatings
-          numberOfSars={5} rating={review.star} starDimension="13px"
-          starSpacing="1px" starRatedColor='orange' starEmptyColor='#b3b3b3'/>
-        <StarNumber>{review.star}</StarNumber>
-        {review.title}
-      </Wrapper>
+      <header>
+        5 {review.title}
+      </header>
 
       <Wrapper>
         <Comment>
@@ -111,18 +140,22 @@ const ReviewListEntry = (props) => {
           Was this review helpful to you?
         </Helpful>
         <Thumbs>
-          <Button> < FaThumbsUp /> {review.like}</Button>
-          <Button>
-            < FaThumbsUp style={{transform: 'rotate(180deg)'}}/> {review.dislike}</Button>
+          <Button>{review.like}</Button>
+          <Button>{review.dislike}</Button>
         </Thumbs>
         <Flag>
-          <a style={{color: '#cd2418'}} href='#'>Flag this review</a>
+          <a href=''>Flag this review</a>
         </Flag>
       </Wrapper>
+
 
     </Section>
   );
 };
 
-export default ReviewListEntry;
 
+
+
+
+
+*/
