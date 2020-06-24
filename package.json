@@ -19,6 +19,9 @@
   "bugs": {
     "url": "https://github.com/Team-Katara/Joel_Service/issues"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "homepage": "https://github.com/Team-Katara/Joel_Service#readme",
   "devDependencies": {
     "@babel/core": "^7.10.2",

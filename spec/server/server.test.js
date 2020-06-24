@@ -11,14 +11,5 @@ describe('Test the API endpoint', () => {
       });
   });
 
-  test('GET method returns an array of listings', async () => {
-    return request(app)
-      .get('/api/reviews')
-      .then(response => {
-        expect(Array.isArray(response.body)).toBe(true);
-        expect(response.body[1]).toHaveProperty('name');
-        expect(response.body[1]).toHaveProperty('comment');
-        expect(response.body[1]).toHaveProperty('star');
-      });
-  });
+  // implement post request test here
 });
