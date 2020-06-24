@@ -21,8 +21,8 @@ const generate = function() {
 };
 
 module.exports = {
-  fill: function() {
-    for (let i = 0; i < 20; i++) {
+  fill: function(n) {
+    for (let i = 0; i < n; i++) {
       var generatedReview = generate();
       storage.push(generatedReview);
     }

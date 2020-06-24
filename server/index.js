@@ -20,7 +20,4 @@ app.get('/api/reviews', function(req, res) {
 });
 
 
-
-const port = 3001;
-
-app.listen(port, console.log(`Listening on http://localhost:${port}`));
+module.exports = app;
