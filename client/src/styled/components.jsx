@@ -13,7 +13,6 @@ export const Section = styled.div`
 export const SearchsSection = styled.div`
   border: 1px solid #ccc;
   font-family: montserratbold, Arial;
-  padding: 10px 0 10px;
   margin: 30px auto;
   width: auto;
   max-width: 1500px;

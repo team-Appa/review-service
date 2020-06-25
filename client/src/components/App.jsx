@@ -7,11 +7,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      reviews: [],
+      filtered: [],
     };
 
     this.getComments = this.getComments.bind(this);
     this.updateLikes = this.updateLikes.bind(this);
+    this.filterListOfReviews = this.filterListOfReviews.bind(this);
   }
 
   componentDidMount() {
@@ -57,11 +59,20 @@ class App extends React.Component {
       });
   }
 
+  filterListOfReviews(query, newList) {
+    console.log('passedIn')
+    this.setState({
+      reviews: newList
+    });
+  }
+
   render() {
-    var { reviews } = this.state;
+    const { reviews } = this.state;
     return (
       <div>
-        <Search customers={reviews.length}/>
+        <Search
+          reviews={reviews} filterListOfReviews={this.filterListOfReviews}
+        />
         <ReviewList reviews={reviews} updateLikes={this.updateLikes} />
       </div>
     );

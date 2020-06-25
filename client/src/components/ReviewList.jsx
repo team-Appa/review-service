@@ -3,7 +3,7 @@ import ReviewListEntry from './ReviewListEntry.jsx';
 
 const ReviewList = (props) => {
   const { reviews } = props;
-  // console.log(reviews);
+  // console.log('ReviewList', reviews);
   return (
     <div>
       {

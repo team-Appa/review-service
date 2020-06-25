@@ -16,31 +16,67 @@ const Numbers = styled.h1`
 
 const SearchBar = styled.section`
   flex: 0 auto;
-  width: 500px;
+  width: 620px;
   display: flex;
 `;
 
-const Search = (props) => {
-  return (
-    <SearchsSection>
-      <SearchWrapper>
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searched: ''
+    };
 
-        <Numbers>
-          Reviewed by {props.customers} customers
-        </Numbers>
+    this.filterListOfReviews = props.filterListOfReviews;
+  }
 
-        <SearchBar>
-          <input type='text' placeholder='Enter Search Terms'
-            style={{width: '100%'}}></input>
-          <SearchButton>
-            <FaSearch style={{transform: 'rotate(90deg)', padding: '5px'}}/>
-          </SearchButton>
-        </SearchBar>
+  updateSearchedKeyWord(event) {
+    // console.log(this.state.searched);
+    this.setState({
+      searched: event
+    });
+  }
 
-      </SearchWrapper>
+  onClickingSearch() {
+    // console.log(this.props.reviews[0]);
+    const query = this.state.searched.toLowerCase();
 
-    </SearchsSection>
-  );
-};
+    // console.log(this.props.reviews);
+    const newList = this.props.reviews.reduce((acc, review) => {
+      const comment = review.comment.toLowerCase();
+
+      if (comment.includes(query)) {
+        acc.push(review);
+      }
+      return acc;
+    }, []);
+
+    // console.log(newList);
+    this.filterListOfReviews(query, newList);
+  }
+
+  render() {
+    return (
+      <SearchsSection>
+        <SearchWrapper>
+
+          <Numbers>
+            Reviewed by {this.props.reviews.length} customers
+          </Numbers>
+
+          <SearchBar onChange={(e) => this.updateSearchedKeyWord(e.target.value)}>
+            <input type='text' placeholder='Enter Search Terms'
+              style={{width: '100%'}}></input>
+            <SearchButton onClick={() => this.onClickingSearch()}>
+              <FaSearch style={{transform: 'rotate(90deg)', padding: '5px'}}/>
+            </SearchButton>
+          </SearchBar>
+
+        </SearchWrapper>
+
+      </SearchsSection>
+    );
+  }
+}
 
 export default Search;
