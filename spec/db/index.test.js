@@ -6,7 +6,7 @@ const request = require('supertest');
 describe('Test to see if data gets retrieved properly', () => {
   const randomlyPickedData = Math.floor(Math.random() * 10);
 
-  test('GET method returns an array of listings', async () => {
+  test('GET method returns an array of listings', (done) => {
     return request(app)
       .get('/api/reviews')
       .then(response => {
@@ -19,10 +19,11 @@ describe('Test to see if data gets retrieved properly', () => {
         expect(response.body[1]).toHaveProperty('like');
         expect(response.body[1]).toHaveProperty('dislike');
         expect(response.body[1]).toHaveProperty('star');
+        done();
       });
   });
 
-  test('Randomly picked data has correct properties', async () => {
+  test('Randomly picked data has correct properties', (done) => {
     return request(app)
       .get('/api/reviews')
       .then(response => {
@@ -35,6 +36,7 @@ describe('Test to see if data gets retrieved properly', () => {
         expect(response.body[randomlyPickedData]).toHaveProperty('like');
         expect(response.body[randomlyPickedData]).toHaveProperty('dislike');
         expect(response.body[randomlyPickedData]).toHaveProperty('star');
+        done();
       });
   });
 });
