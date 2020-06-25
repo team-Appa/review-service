@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ReviewList from './ReviewList.jsx';
-import Search from './search.jsx';
+import Search from './search/Search.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -61,7 +61,7 @@ class App extends React.Component {
     var { reviews } = this.state;
     return (
       <div>
-        <Search />
+        <Search customers={reviews.length}/>
         <ReviewList reviews={reviews} updateLikes={this.updateLikes} />
       </div>
     );
