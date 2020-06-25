@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 app.get('/api/reviews', function(req, res) {
   Review.find()
     .exec((err, result) => {
-      if (err) console.log('Error getting reviews', err);
+      if (err) { console.log('Error getting reviews', err); }
       res.status(200).json(result);
     });
 });

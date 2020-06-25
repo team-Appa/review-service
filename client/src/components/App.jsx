@@ -1,5 +1,7 @@
 import React from 'react';
+
 import ReviewList from './ReviewList.jsx';
+import Search from './search.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -48,7 +50,7 @@ class App extends React.Component {
       .then(result => {
         console.log(result);
         this.getComments();
-        console.log(this.state.reviews)
+        console.log(this.state.reviews);
       })
       .catch(err => {
         console.log('Error making PATCH request', err);
@@ -59,6 +61,7 @@ class App extends React.Component {
     var { reviews } = this.state;
     return (
       <div>
+        <Search />
         <ReviewList reviews={reviews} updateLikes={this.updateLikes} />
       </div>
     );
