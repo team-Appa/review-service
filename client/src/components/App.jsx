@@ -7,6 +7,9 @@ class App extends React.Component {
     this.state = {
       reviews: []
     };
+
+    this.getComments = this.getComments.bind(this);
+    this.updateLikes = this.updateLikes.bind(this);
   }
 
   componentDidMount() {
@@ -33,11 +36,30 @@ class App extends React.Component {
       });
   }
 
+  updateLikes(data) {
+    fetch('http://localhost:3001/api/reviews', {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result);
+        this.getComments();
+        console.log(this.state.reviews)
+      })
+      .catch(err => {
+        console.log('Error making PATCH request', err);
+      });
+  }
+
   render() {
     var { reviews } = this.state;
     return (
       <div>
-        <ReviewList reviews={reviews} />
+        <ReviewList reviews={reviews} updateLikes={this.updateLikes} />
       </div>
     );
   }

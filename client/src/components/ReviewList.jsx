@@ -1,13 +1,16 @@
 import React from 'react';
 import ReviewListEntry from './ReviewListEntry.jsx';
 
-const ReviewList = ({ reviews }) => {
+const ReviewList = (props) => {
+  const { reviews } = props;
   // console.log(reviews);
   return (
     <div>
       {
         reviews.map(review => (
-          <ReviewListEntry key={review._id} review={review} />
+          <ReviewListEntry
+            key={review._id} review={review}
+            updateLikes={props.updateLikes} />
         ))
       }
     </div>
