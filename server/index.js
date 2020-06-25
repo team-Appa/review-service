@@ -19,5 +19,18 @@ app.get('/api/reviews', function(req, res) {
     });
 });
 
+app.patch('/api/reviews', function(req, res) {
+  const filter = { _id: req.body._id };
+  const update = req.body.like ? { like: req.body.like + 1 } : { dislike: req.body.dislike + 1 };
+  console.log(update);
+
+  Review.findOneAndUpdate(filter, update, (err, result) => {
+    if (err) {
+      console.log('Error making a patch req in server', err);
+    }
+    res.status(201).json(`Updated. Now at Like: ${result.like}, and Dislike: ${result.dislike}.`);
+  });
+
+});
 
 module.exports = app;
