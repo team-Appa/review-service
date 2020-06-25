@@ -40,3 +40,47 @@ describe('Test to see if data gets retrieved properly', () => {
       });
   });
 });
+
+describe('Test to see if data gets updated properly', () => {
+  const service = {
+    _id: "5eebf056630c880a52299514",
+    like: 13,
+    dislike: 18
+  };
+
+  const serviceWithUnknowID = {
+    _id: "notvalid123",
+    like: 1,
+    dislike: 0
+  }
+
+  test('Increments like count by 1', (done) => {
+    return request(app)
+      .patch('/api/reviews')
+      .send(service)
+      .then(response => {
+        expect(response.body.like).toBe(service.like + 1);
+        done();
+      });
+  });
+
+  test('Increments dislike count by 1', (done) => {
+    return request(app)
+      .patch('/api/reviews')
+      .send(service)
+      .then(response => {
+        expect(response.body.dislike).toBe(service.dislike + 1);
+        done();
+      });
+  });
+
+  test('Should return when the provided ID does not exist', (done) => {
+    return request(app)
+      .patch('/api/reviews')
+      .send(serviceWithUnknowID)
+      .then(response => {
+        expect(response.body.dislike).toBeUndefined();
+        done();
+      });
+  });
+});
