@@ -1,17 +1,19 @@
 import React from 'react';
 
 import ReviewList from './ReviewList.jsx';
-import Search from './search.jsx';
+import Search from './search/Search.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      reviews: [],
+      fullReviews: [],
     };
 
     this.getComments = this.getComments.bind(this);
     this.updateLikes = this.updateLikes.bind(this);
+    this.filterListOfReviews = this.filterListOfReviews.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +32,8 @@ class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          reviews: data
+          reviews: data,
+          fullReviews: data
         });
       })
       .catch(err => {
@@ -57,11 +60,27 @@ class App extends React.Component {
       });
   }
 
+  filterListOfReviews(query, newList) {
+    const oldList = this.state.fullReviews;
+    if (query === '') {
+      this.setState({
+        reviews: oldList
+      })
+    } else {
+      this.setState({
+        reviews: newList
+      });
+    }
+
+  }
+
   render() {
-    var { reviews } = this.state;
+    const { reviews } = this.state;
     return (
       <div>
-        <Search />
+        <Search
+          reviews={reviews} filterListOfReviews={this.filterListOfReviews}
+        />
         <ReviewList reviews={reviews} updateLikes={this.updateLikes} />
       </div>
     );
