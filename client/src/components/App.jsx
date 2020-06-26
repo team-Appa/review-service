@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       reviews: [],
-      filtered: [],
+      fullReviews: [],
     };
 
     this.getComments = this.getComments.bind(this);
@@ -32,7 +32,8 @@ class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          reviews: data
+          reviews: data,
+          fullReviews: data
         });
       })
       .catch(err => {
@@ -60,10 +61,17 @@ class App extends React.Component {
   }
 
   filterListOfReviews(query, newList) {
-    console.log('passedIn')
-    this.setState({
-      reviews: newList
-    });
+    const oldList = this.state.fullReviews;
+    if (query === '') {
+      this.setState({
+        reviews: oldList
+      })
+    } else {
+      this.setState({
+        reviews: newList
+      });
+    }
+
   }
 
   render() {

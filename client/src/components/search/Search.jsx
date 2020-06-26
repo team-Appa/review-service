@@ -1,24 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { SearchsSection, SearchWrapper } from '../../styled/components.jsx';
+import { SearchsSection, SearchWrapper, SearchButton, Numbers, SearchBar, ClearButton } from '../../styled/components.jsx';
 import { FaSearch } from 'react-icons/fa';
-
-const SearchButton = styled.button`
-  background-color: grey;
-  color: white;
-`;
-
-const Numbers = styled.h1`
-  flex: 1;
-  font-size: 22px;
-`;
-
-const SearchBar = styled.section`
-  flex: 0 auto;
-  width: 620px;
-  display: flex;
-`;
 
 class Search extends React.Component {
   constructor(props) {
@@ -55,6 +39,17 @@ class Search extends React.Component {
     this.filterListOfReviews(query, newList);
   }
 
+  onClickingClear() {
+    this.setState({
+      searched: ''
+    });
+
+    // implement a way to clear up searchbar
+    const query = this.state.searched;
+
+    this.filterListOfReviews('', this.props.reviews);
+  }
+
   render() {
     return (
       <SearchsSection>
@@ -65,8 +60,11 @@ class Search extends React.Component {
           </Numbers>
 
           <SearchBar onChange={(e) => this.updateSearchedKeyWord(e.target.value)}>
-            <input type='text' placeholder='Enter Search Terms'
-              style={{width: '100%'}}></input>
+            <input
+              type='text' placeholder='Enter Search Terms'
+              style={{width: '100%'}} >
+            </input>
+            <ClearButton onClick={() => this.onClickingClear()}>X</ClearButton>
             <SearchButton onClick={() => this.onClickingSearch()}>
               <FaSearch style={{transform: 'rotate(90deg)', padding: '5px'}}/>
             </SearchButton>
