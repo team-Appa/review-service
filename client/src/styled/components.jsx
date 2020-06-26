@@ -97,7 +97,7 @@ export const ClearButton = styled.button`
   color: black;
   border: none;
   right: 12%;
-  top: 6.5%;
+  top: 6.6%;
   position: absolute;
   font-weight: bold;
   font-size: 14px;

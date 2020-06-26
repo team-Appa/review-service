@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 import { SearchsSection, SearchWrapper, SearchButton, Numbers, SearchBar, ClearButton } from '../../styled/components.jsx';
@@ -40,12 +41,10 @@ class Search extends React.Component {
   }
 
   onClickingClear() {
+    ReactDOM.findDOMNode(this.refs.search).value = '';
     this.setState({
       searched: ''
     });
-
-    // implement a way to clear up searchbar
-    const query = this.state.searched;
 
     this.filterListOfReviews('', this.props.reviews);
   }
@@ -61,10 +60,10 @@ class Search extends React.Component {
 
           <SearchBar onChange={(e) => this.updateSearchedKeyWord(e.target.value)}>
             <input
-              type='text' placeholder='Enter Search Terms'
+              type='text' placeholder='Enter Search Terms' ref='search'
               style={{width: '100%'}} >
             </input>
-            <ClearButton onClick={() => this.onClickingClear()}>X</ClearButton>
+            <ClearButton onClick={() => this.onClickingClear()} > X </ClearButton>
             <SearchButton onClick={() => this.onClickingSearch()}>
               <FaSearch style={{transform: 'rotate(90deg)', padding: '5px'}}/>
             </SearchButton>
