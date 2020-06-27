@@ -71,26 +71,34 @@ class App extends React.Component {
 
   filterListOfReviews(query, newList) {
     const oldList = this.state.fullReviews;
+    const pageButtons = null;
+    if (newList.length > 20) {
+      pageButtons = false;
+    }
+
     if (query === '') {
       this.setState({
-        reviews: oldList
+        reviews: oldList,
+        pageReview: oldList.slice(0, 21),
+        next: true
       });
     } else {
       this.setState({
-        reviews: newList
+        reviews: newList,
+        pageReview: newList,
+        next: pageButtons
       });
     }
 
   }
 
   prevButton() {
-    console.log('hi');
     const { fullReviews } = this.state;
     const newFirst = this.state.firstComment - 20;
     const newLast = newFirst + 19;
 
     // if last comment + 20 < limit
-    if (this.state.firstComment - 20 > 0) {
+    if (this.state.firstComment - 20 > 1) {
       // update lastComment, pageReview, firstComment
       this.setState({
         next: true,
@@ -136,13 +144,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { reviews, next, prev, firstComment, lastComment } = this.state;
+    const { reviews, next, prev, firstComment, lastComment, pageReview } = this.state;
     return (
       <div>
         <Search
           reviews={reviews} filterListOfReviews={this.filterListOfReviews}
         />
-        <ReviewList id='top' reviews={reviews} updateLikes={this.updateLikes} />
+        <ReviewList id='top' reviews={pageReview} updateLikes={this.updateLikes} />
         <Pagination nextB={this.nextButton} prevB={this.prevButton} prev={prev}
           next={next} first={firstComment} last={lastComment} />
       </div>
