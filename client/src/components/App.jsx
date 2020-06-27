@@ -122,7 +122,7 @@ class App extends React.Component {
         prev: true,
         firstComment: newFirst,
         lastComment: newLast,
-        pageReview: fullReviews.slice(newFirst, newLast + 1)
+        pageReview: fullReviews.slice(newFirst, newLast + 1),
       });
     } else {
     // else update next = false, pageReview (lastComment + 1 to limit),
@@ -130,7 +130,7 @@ class App extends React.Component {
         next: false,
         firstComment: newFirst,
         lastComment: fullReviews.length,
-        pageReview: fullReviews.slice(newFirst)
+        pageReview: fullReviews.slice(newFirst),
       });
     }
   }

@@ -21,6 +21,7 @@ const PageButton = styled.button`
   outline: none;
   font-size: 1em;
   font-weight: bold;
+  cursor: pointer;
   &:focus {
     border: 1px solid blue;
   }
