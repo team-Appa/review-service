@@ -2,6 +2,7 @@ import React from 'react';
 
 import ReviewList from './ReviewList.jsx';
 import Search from './search/Search.jsx';
+import Pagination from './pagination.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -65,7 +66,7 @@ class App extends React.Component {
     if (query === '') {
       this.setState({
         reviews: oldList
-      })
+      });
     } else {
       this.setState({
         reviews: newList
@@ -81,10 +82,20 @@ class App extends React.Component {
         <Search
           reviews={reviews} filterListOfReviews={this.filterListOfReviews}
         />
-        <ReviewList reviews={reviews} updateLikes={this.updateLikes} />
+        <ReviewList id='top' reviews={reviews} updateLikes={this.updateLikes} />
+        <Pagination/>
       </div>
     );
   }
 }
 
 export default App;
+
+
+// Pagination Idea :
+
+// - refactor the db
+
+// https://medium.com/how-to-react/create-pagination-in-reactjs-e4326c1b9855
+
+// https://www.youtube.com/watch?v=IYCa1F-OWmk

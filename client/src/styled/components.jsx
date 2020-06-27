@@ -20,6 +20,16 @@ export const SearchsSection = styled.div`
   background-color: #f2f2f2;
 `;
 
+export const PageSection = styled.div`
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-family: montserratbold, Arial;
+  margin: 0 auto;
+  width: auto;
+  max-width: 1500px;
+  font-weight: bold;
+`;
+
 export const Wrapper = styled.div`
 display: flex;
 flex-flow: row nowrap;
