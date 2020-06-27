@@ -10,11 +10,18 @@ class App extends React.Component {
     this.state = {
       reviews: [],
       fullReviews: [],
+      pageReview: [],
+      prev: false,
+      next: true,
+      firstComment: 1,
+      lastComment: 20
     };
 
     this.getComments = this.getComments.bind(this);
     this.updateLikes = this.updateLikes.bind(this);
     this.filterListOfReviews = this.filterListOfReviews.bind(this);
+    this.prevButton = this.prevButton.bind(this);
+    this.nextButton = this.nextButton.bind(this);
   }
 
   componentDidMount() {
@@ -34,7 +41,8 @@ class App extends React.Component {
       .then(data => {
         this.setState({
           reviews: data,
-          fullReviews: data
+          fullReviews: data,
+          pageReview: data.slice(0, 21)
         });
       })
       .catch(err => {
@@ -52,9 +60,9 @@ class App extends React.Component {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result);
+        // console.log(result);
         this.getComments();
-        console.log(this.state.reviews);
+        // console.log(this.state.reviews);
       })
       .catch(err => {
         console.log('Error making PATCH request', err);
@@ -75,15 +83,68 @@ class App extends React.Component {
 
   }
 
+  prevButton() {
+    console.log('hi');
+    const { fullReviews } = this.state;
+    const newFirst = this.state.firstComment - 20;
+    const newLast = newFirst + 19;
+
+    // if last comment + 20 < limit
+    if (this.state.firstComment - 20 > 0) {
+      // update lastComment, pageReview, firstComment
+      this.setState({
+        next: true,
+        firstComment: newFirst,
+        lastComment: newLast,
+        pageReview: fullReviews.slice(newFirst, newLast + 1)
+      });
+    } else {
+    // else update next = false, pageReview (lastComment + 1 to limit),
+      this.setState({
+        prev: false,
+        firstComment: 1,
+        lastComment: 20,
+        pageReview: fullReviews.slice(0, 21)
+      });
+    }
+  }
+
+  nextButton() {
+    console.log('clicked');
+    const { fullReviews } = this.state;
+    const newFirst = this.state.firstComment + 20;
+    const newLast = this.state.lastComment + 20;
+
+    // if last comment + 20 < limit
+    if (this.state.lastComment + 20 < fullReviews.length) {
+      // update lastComment, pageReview, firstComment
+      this.setState({
+        prev: true,
+        firstComment: newFirst,
+        lastComment: newLast,
+        pageReview: fullReviews.slice(newFirst, newLast + 1)
+      });
+    } else {
+    // else update next = false, pageReview (lastComment + 1 to limit),
+      this.setState({
+        next: false,
+        firstComment: newFirst,
+        lastComment: fullReviews.length,
+        pageReview: fullReviews.slice(newFirst)
+      });
+    }
+  }
+
   render() {
-    const { reviews } = this.state;
+    const { reviews, next, prev, firstComment, lastComment } = this.state;
     return (
       <div>
         <Search
           reviews={reviews} filterListOfReviews={this.filterListOfReviews}
         />
         <ReviewList id='top' reviews={reviews} updateLikes={this.updateLikes} />
-        <Pagination/>
+        <Pagination nextB={this.nextButton} prevB={this.prevButton} prev={prev}
+          next={next} first={firstComment} last={lastComment} />
       </div>
     );
   }

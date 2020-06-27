@@ -27,14 +27,15 @@ const PageButton = styled.button`
 `;
 
 const Pagination = (props) => {
+  const { nextB, prevB, next, prev, first, last } = props;
   return (
     <PageSection>
       <Wrapper>
-        <Displayer>Displaying Reviews 1-20</Displayer>
+        <Displayer>Displaying Reviews {first}-{last}</Displayer>
         <GotoTop href='#top'> Back to Top </GotoTop>
-        { <PageButton> <FaAngleDoubleLeft/> Prev </PageButton> }
-        |
-        { <PageButton> Next <FaAngleDoubleRight/> </PageButton> }
+        {prev && <PageButton onClick={() => prevB()}> <FaAngleDoubleLeft/> Prev </PageButton> }
+        { prev && next && <div> | </div> }
+        { next && <PageButton onClick={() => nextB() }> Next <FaAngleDoubleRight/> </PageButton> }
       </Wrapper>
     </PageSection>
   );
