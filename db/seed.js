@@ -4,7 +4,7 @@ const Samples = require('../faker/faker.js');
 const Review = require('./comments.js');
 
 
-const sampleReviews = Samples.fill(30);
+const sampleReviews = Samples.fill(76);
 
 const insertSampleReviews = function() {
   Review.create(sampleReviews)
