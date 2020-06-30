@@ -3,14 +3,19 @@ const db = require('./index.js');
 mongoose.Promise = global.Promise;
 
 const reviewSchema = new mongoose.Schema({
-  name: String,
-  location: String,
-  timestamp: String,
-  title: String,
-  comment: String,
-  like: Number,
-  dislike: Number,
-  star: Number
+  id: Number,
+  reviews: [
+    {
+      name: String,
+      location: String,
+      timestamp: String,
+      title: String,
+      comment: String,
+      like: Number,
+      dislike: Number,
+      star: Number
+    }
+  ]
 });
 
 const Review = mongoose.model('review', reviewSchema);

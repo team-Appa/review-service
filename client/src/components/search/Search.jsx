@@ -55,7 +55,7 @@ class Search extends React.Component {
         <SearchWrapper>
 
           <Numbers>
-            Reviewed by {this.props.reviews.length} customers
+            Reviewed by {this.props.reviews.length - 1} customers
           </Numbers>
 
           <SearchBar onChange={(e) => this.updateSearchedKeyWord(e.target.value)}>

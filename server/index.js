@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const cors = require('cors');
 
 const db = require('../db/index.js');
 const Review = require('../db/comments.js');
@@ -8,27 +9,48 @@ const Review = require('../db/comments.js');
 const app = express();
 
 app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/public')));
 
 app.get('/api/reviews', function(req, res) {
-  Review.find()
+  // console.log(req.query);
+  const id = req.query.id;
+  Review.find({ id })
     .exec((err, result) => {
       if (err) { console.log('Error getting reviews', err); }
-      res.status(200).json(result);
+      res.status(200).json(result[0].reviews);
     });
 });
 
 app.patch('/api/reviews', function(req, res) {
+  const id = req.query.id;
   const filter = { _id: req.body._id };
-  const update = req.body.like ? { like: req.body.like + 1 } : { dislike: req.body.dislike + 1 };
+  const updateLike = req.body.like ? true : false;
 
-  Review.findOneAndUpdate(filter, update, (err, result) => {
-    if (err) {
-      console.log('Error making a patch req in server', err);
-    }
-    res.status(201).json(result);
-  });
+  Review.find({ id })
+    .exec((err, result) => {
+      if (err) { console.log('Error getting reviews', err); }
+
+      let allReviews = result[0].reviews;
+
+      for (let i = 0; i < allReviews.length; i++) {
+        if (allReviews[i]._id.toString() === req.body._id) {
+          if (updateLike) {
+            allReviews[i].like += 1;
+            console.log('LIKE changed??', allReviews[i].like);
+          } else {
+            allReviews[i].dislike += 1;
+          }
+          break;
+        }
+      }
+
+      Review.findOneAndUpdate({ id }, { reviews: allReviews}, (err, result) => {
+        if (err) { console.log('Error updating reviews', err); }
+        res.status(200).json(result);
+      });
+    });
 
 });
 

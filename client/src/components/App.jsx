@@ -4,6 +4,7 @@ import ReviewList from './ReviewList.jsx';
 import Search from './search/Search.jsx';
 import Pagination from './pagination.jsx';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,7 @@ class App extends React.Component {
       prev: false,
       next: true,
       firstComment: 1,
-      lastComment: 20
+      lastComment: 5
     };
 
     this.getComments = this.getComments.bind(this);
@@ -31,7 +32,9 @@ class App extends React.Component {
 
   // get request to server
   getComments() {
-    fetch('http://localhost:3001/api/reviews', {
+    const queryID = this.getQueries();
+    // `http://localhost:3001/api/reviews?id=${queryID}`
+    fetch(`http://localhost:3001/api/reviews?id=${queryID}`, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -42,7 +45,7 @@ class App extends React.Component {
         this.setState({
           reviews: data,
           fullReviews: data,
-          pageReview: data.slice(0, 21)
+          pageReview: data.slice(0, 5)
         });
       })
       .catch(err => {
@@ -51,7 +54,9 @@ class App extends React.Component {
   }
 
   updateLikes(data) {
-    fetch('http://localhost:3001/api/reviews', {
+    const queryID = this.getQueries();
+
+    fetch(`http://localhost:3001/api/reviews?id=${queryID}`, {
       method: 'PATCH',
       body: JSON.stringify(data),
       headers: {
@@ -69,17 +74,25 @@ class App extends React.Component {
       });
   }
 
+  getQueries() {
+    const url = window.location.href;
+
+    let queries = url.split('?');
+    queries = queries[queries.length - 1].split('=');
+    return queries[1];
+  }
+
   filterListOfReviews(query, newList) {
     const oldList = this.state.fullReviews;
     const pageButtons = null;
-    if (newList.length > 20) {
+    if (newList.length > 5) {
       pageButtons = false;
     }
 
     if (query === '') {
       this.setState({
         reviews: oldList,
-        pageReview: oldList.slice(0, 21),
+        pageReview: oldList.slice(0, 5),
         next: true
       });
     } else {
@@ -94,11 +107,11 @@ class App extends React.Component {
 
   prevButton() {
     const { fullReviews } = this.state;
-    const newFirst = this.state.firstComment - 20;
-    const newLast = newFirst + 19;
+    const newFirst = this.state.firstComment - 5;
+    const newLast = newFirst + 4;
 
-    // if last comment + 20 < limit
-    if (this.state.firstComment - 20 > 1) {
+    // if last comment + 5 < limit
+    if (this.state.firstComment - 5 > 1) {
       // update lastComment, pageReview, firstComment
       this.setState({
         next: true,
@@ -111,20 +124,21 @@ class App extends React.Component {
       this.setState({
         prev: false,
         firstComment: 1,
-        lastComment: 20,
-        pageReview: fullReviews.slice(0, 21)
+        lastComment: 5,
+        pageReview: fullReviews.slice(0, 5)
       });
     }
   }
 
   nextButton() {
-    console.log('clicked');
-    const { fullReviews } = this.state;
-    const newFirst = this.state.firstComment + 20;
-    const newLast = this.state.lastComment + 20;
 
-    // if last comment + 20 < limit
-    if (this.state.lastComment + 20 < fullReviews.length) {
+    console.log(this.state.fullReviews.length);
+    const { fullReviews } = this.state;
+    const newFirst = this.state.firstComment + 5;
+    const newLast = this.state.lastComment + 5;
+
+    // if last comment + 5 < limit
+    if (this.state.lastComment + 5 < fullReviews.length) {
       // update lastComment, pageReview, firstComment
       this.setState({
         prev: true,
@@ -137,7 +151,7 @@ class App extends React.Component {
       this.setState({
         next: false,
         firstComment: newFirst,
-        lastComment: fullReviews.length,
+        lastComment: fullReviews.length - 1,
         pageReview: fullReviews.slice(newFirst),
       });
     }
