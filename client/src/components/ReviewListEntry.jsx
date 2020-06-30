@@ -9,6 +9,7 @@ import { Section, Wrapper, Comment, CommentOwner, Time, Helpful, Thumbs, Flag, S
 const Button = styled.button`
   flex: 0;
   cursor: pointer;
+  pointer-events: ${props => (props.clicked ? 'none' : 'auto')};
   padding: 15px;
   color: ${props => (props.like ? 'white' : 'grey')};
   background-color: ${props => (props.like ? 'red' : 'transparent')};
@@ -24,6 +25,7 @@ const Button = styled.button`
 const Disbutton = styled.button`
   flex: 0;
   cursor: pointer;
+  pointer-events: ${props => (props.clicked ? 'none' : 'auto')};
   padding: 15px;
   color: ${props => (props.dislike ? 'white' : 'grey')};
   background-color: ${props => (props.dislike ? 'red' : 'transparent')};
