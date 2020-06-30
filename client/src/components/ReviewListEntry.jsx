@@ -35,6 +35,7 @@ const Disbutton = styled.button`
     background-color: #f2f2f2;
   };
 `;
+// change cursor and clickable based on clicked props
 
 class ReviewListEntry extends React.Component {
   constructor(props) {
