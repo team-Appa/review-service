@@ -76,10 +76,15 @@ class App extends React.Component {
 
   getQueries() {
     const url = window.location.href;
-
+    let passingID = 1;
     let queries = url.split('?');
-    queries = queries[queries.length - 1].split('=');
-    return queries[1];
+
+    if (queries.length !== 1) {
+      queries = queries[queries.length - 1].split('=');
+      passingID = queries[1];
+    }
+
+    return passingID;
   }
 
   filterListOfReviews(query, newList) {
