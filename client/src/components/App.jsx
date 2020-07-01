@@ -34,7 +34,7 @@ class App extends React.Component {
   getComments() {
     const queryID = this.getQueries();
     // `http://localhost:3001/api/reviews?id=${queryID}`
-    fetch(`http://localhost:3001/api/reviews?id=${queryID}`, {
+    fetch(`http://localhost:3004/api/reviews?id=${queryID}`, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -56,7 +56,7 @@ class App extends React.Component {
   updateLikes(data) {
     const queryID = this.getQueries();
 
-    fetch(`http://localhost:3001/api/reviews?id=${queryID}`, {
+    fetch(`http://localhost:3004/api/reviews?id=${queryID}`, {
       method: 'PATCH',
       body: JSON.stringify(data),
       headers: {
@@ -131,8 +131,6 @@ class App extends React.Component {
   }
 
   nextButton() {
-
-    console.log(this.state.fullReviews.length);
     const { fullReviews } = this.state;
     const newFirst = this.state.firstComment + 5;
     const newLast = this.state.lastComment + 5;

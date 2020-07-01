@@ -38,7 +38,6 @@ app.patch('/api/reviews', function(req, res) {
         if (allReviews[i]._id.toString() === req.body._id) {
           if (updateLike) {
             allReviews[i].like += 1;
-            console.log('LIKE changed??', allReviews[i].like);
           } else {
             allReviews[i].dislike += 1;
           }
