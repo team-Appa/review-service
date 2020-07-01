@@ -1,6 +1,9 @@
 # Product Reviews
 
-> Project description
+> Product Reviews module is a clone version of Guitar Center's review module. The review module includes the following:
+1. Search functionality to filter reviews based on searched keyword.
+1. Review list that displays all reviews.
+1. Pagination
 
 ## Usage
 
@@ -8,9 +11,9 @@
 
 ## Related Projects
 Services
-- Product Browser:       https://github.com/teamName/repo
-- Recently Viewed Items: https://github.com/teamName/repo
-- Similar Items:         https://github.com/teamName/repo
+- Product Browser:       https://github.com/Team-Katara/john-service
+- Recently Viewed Items: https://github.com/Team-Katara/Shraya-Service
+- Similar Items:         https://github.com/Team-Katara/Kana-service
 
 Proxy
 https://github.com/Team-Katara/Joel_Proxy
