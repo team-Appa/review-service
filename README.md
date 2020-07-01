@@ -1,13 +1,16 @@
-# Project Name
+# Product Reviews
 
 > Project description
 
+## Usage
+
+> Some usage instructions
+
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - Product Browser:       https://github.com/teamName/repo
+  - Recently Viewed Items: https://github.com/teamName/repo
+  - Similar Items:         https://github.com/teamName/repo
 
 ## Table of Contents
 
@@ -15,9 +18,6 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
 
-## Usage
-
-> Some usage instructions
 
 ## Requirements
 
