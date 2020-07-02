@@ -9,7 +9,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searched: ''
+      searched: '',
     };
 
     this.filterListOfReviews = props.filterListOfReviews;
@@ -55,7 +55,7 @@ class Search extends React.Component {
         <SearchWrapper>
 
           <Numbers>
-            Reviewed by {this.props.reviews.length - 1} customers
+            Reviewed by {this.props.reviews.length === this.props.full ? this.props.full - 1 : this.props.reviews.length } customers
           </Numbers>
 
           <SearchBar onChange={(e) => this.updateSearchedKeyWord(e.target.value)}>

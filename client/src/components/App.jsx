@@ -162,11 +162,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { reviews, next, prev, firstComment, lastComment, pageReview } = this.state;
+    const { fullReviews, reviews, next, prev, firstComment, lastComment, pageReview } = this.state;
     return (
       <div>
         <Search
-          reviews={reviews} filterListOfReviews={this.filterListOfReviews}
+          full={fullReviews.length} reviews={reviews} filterListOfReviews={this.filterListOfReviews}
         />
         <ReviewList id='top' reviews={pageReview} updateLikes={this.updateLikes} />
         <Pagination nextB={this.nextButton} prevB={this.prevButton} prev={prev}
