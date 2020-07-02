@@ -106,9 +106,18 @@ export const ClearButton = styled.button`
   background-color: transparent;
   color: black;
   border: none;
-  right: 12%;
-  top: 6.6%;
-  position: absolute;
   font-weight: bold;
   font-size: 14px;
+  margin: 0 5px;
 `;
+
+// export const ClearButton = styled.button`
+//   background-color: transparent;
+//   color: black;
+//   border: none;
+//   right: 12%;
+//   top: 6.6%;
+//   position: absolute;
+//   font-weight: bold;
+//   font-size: 14px;
+// `;

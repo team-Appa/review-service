@@ -18,7 +18,7 @@ app.get('/api/reviews', function(req, res) {
   const id = req.query.id;
   Review.find({ id })
     .exec((err, result) => {
-      if (err) { console.log('Error getting reviews', err); }
+      if (err) { res.sendStatus(500).json('Error while getting reviews'); }
       res.status(200).json(result[0].reviews);
     });
 });

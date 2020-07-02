@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import ReviewList from './ReviewList.jsx';
 import Search from './search/Search.jsx';

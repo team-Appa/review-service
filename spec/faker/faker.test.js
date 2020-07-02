@@ -1,10 +1,9 @@
 const faker = require('../../faker/faker.js');
 
 test('faker module properly generates sample data', (done) => {
-  const amountOfData = 1;
-  const dataLength = faker.fill(amountOfData);
+  const sampleData = faker.generate();
 
-  expect(dataLength).toHaveLength(amountOfData);
-  expect(dataLength[0].title).not.toBeUndefined();
+  expect(sampleData.length).not.toBe(0);
+  expect(sampleData[0].title).not.toBeUndefined();
   done();
 });
