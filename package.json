@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Team-Katara/Joel_Service.git"
+    "url": "git+https://github.com/team-Appa/review-service.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Team-Katara/Joel_Service/issues"
+    "url": "https://github.com/team-Appa/review-service/issues"
   },
   "jest": {
     "testEnvironment": "node",
@@ -25,7 +25,7 @@
       "^.+\\.js?$": "babel-jest"
     }
   },
-  "homepage": "https://github.com/Team-Katara/Joel_Service#readme",
+  "homepage": "https://github.com/team-Appa/review-service#readme",
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
