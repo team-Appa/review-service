@@ -59,7 +59,15 @@ npm run db:setup
 Within the root directory:
 
 ```sh
-npm run server-dev
+npm start
+```
+
+### Starting Webpack
+
+Within the root directory:
+
+```sh
+npm run build
 ```
 
 ## Server Endpoints
