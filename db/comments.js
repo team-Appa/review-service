@@ -13,12 +13,11 @@ const reviewSchema = new mongoose.Schema({
       comment: String,
       like: Number,
       dislike: Number,
-      star: Number
-    }
-  ]
+      star: Number,
+    },
+  ],
 });
 
 const Review = mongoose.model('review', reviewSchema);
-
 
 module.exports = Review;

@@ -5,9 +5,9 @@
   "main": ".eslintrc.js",
   "scripts": {
     "test": "jest",
-    "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/server.js",
-    "db-dev": "node db/seed.js"
+    "build": "webpack -d --watch",
+    "start": "nodemon server/server.js",
+    "db:setup": "node db/seed.js"
   },
   "repository": {
     "type": "git",
