@@ -26,11 +26,11 @@ https://github.com/Team-Katara/Joel_Proxy
 1. [Requirements](#requirements)
 1. [Development](#development)
 1. [Server Endpoints](#Server-Endpoints)
-   - [/api/reviews](#GET)
-   - [/api/reviews](#PATCH)
-   - [/api/reviews/:reviewid](#PUT)
-   - [/api/reviews](#POST)
-   - [/api/reviews/:reviewid](#DELETE)
+   - [GET /api/reviews](#GET)
+   - [PATCH /api/reviews](#PATCH)
+   - [PUT /api/reviews/:reviewid](#PUT)
+   - [POST /api/reviews](#POST)
+   - [DELETE /api/reviews/:reviewid](#DELETE)
 
 ## Requirements
 
