@@ -102,7 +102,7 @@ app.post('/api/reviews', (req, res) => {
   const itemid = req.query.id;
   var newReview = {
     name: req.body.name,
-    locatlion: req.body.locatlion,
+    location: req.body.location,
     timestamp: req.body.timestamp,
     title: req.body.title,
     comment: req.body.comment,
