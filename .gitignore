@@ -13,3 +13,5 @@ client/public/bundle.js
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
+db/reviews.csv
+
