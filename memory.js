@@ -1,4 +1,4 @@
-const count = Number(process.argv[2]) || 1e7;
+const count = Number(process.argv[2]) || 1e6;
 const state = {};
 
 function nop() {}
