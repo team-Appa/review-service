@@ -13,7 +13,7 @@ const reviewEntry = (id) => {
       name: faker.name.findName(),
       location: faker.fake('{{address.city}} {{address.stateAbbr}}'),
       title: faker.hacker.phrase(),
-      comment: faker.lorem.sentences(),
+      comment: faker.lorem.sentence(),
       likes: random.int(0, 51),
       dislike: random.int(0, 51),
       star: random.int(0, 51),
@@ -52,11 +52,11 @@ var convertToCSV = (array) => {
 };
 
 var writeReviews = fs
-  .createWriteStream(`reviews2.csv`, { flag: 'a' })
+  .createWriteStream(`reviews3.csv`)
   .on('finish', () => console.log('Data generation finished'))
   .on('error', (err) => console.log(err));
 
-var i = 4497000;
+var i = 8994000;
 var start = Date.now();
 write = () => {
   let ok = true;
@@ -69,11 +69,7 @@ write = () => {
     i += 1000;
   }
   if (i < numOfData) {
-    writeReviews.once('drain', () => {
-      setTimeout(() => {
-        write();
-      }, 500);
-    });
+    writeReviews.once('drain', write);
   } else {
     writeReviews.end();
     console.log(Date.now() - start);

@@ -7,7 +7,8 @@
     "test": "jest",
     "build": "webpack -d --watch",
     "start": "nodemon server/server.js",
-    "db:setuppg": "node db/pgseed.js"
+    "datagen": "node ./db/dataGeneration.js",
+    "db:setuppg": "node ./db/pgseed.js"
   },
   "repository": {
     "type": "git",
