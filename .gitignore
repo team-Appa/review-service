@@ -16,3 +16,4 @@ client/public/bundle.js
 db/reviews.csv
 db/reviews2.csv
 
+.env

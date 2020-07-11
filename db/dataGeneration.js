@@ -56,7 +56,7 @@ var writeReviews = fs
   .on('finish', () => console.log('Data generation finished'))
   .on('error', (err) => console.log(err));
 
-var i = 449700;
+var i = 4497000;
 var start = Date.now();
 write = () => {
   let ok = true;
@@ -69,7 +69,11 @@ write = () => {
     i += 1000;
   }
   if (i < numOfData) {
-    writeReviews.once('drain', write);
+    writeReviews.once('drain', () => {
+      setTimeout(() => {
+        write();
+      }, 500);
+    });
   } else {
     writeReviews.end();
     console.log(Date.now() - start);
