@@ -16,15 +16,26 @@
 
 > Output:
 
-> Total query time: 1145 msec. Rows affected
+> Total query time: 2.99 msec. Rows affected 2
 
 \_id | itemid | name | location | posttime | title | comment | likes | dislike | star
 ----------+---------+---------------------+-------------------------+------------+-------------------------------------------------------------------------------------+--------------------------------------------------+-------+---------+------
 55006613 | 9999000 | Gayle Cormier | North Deborahborough AL | 2018-07-19 | connecting the port won't do anything, we need to parse the multi-byte EXE program! | Qui ipsum in harum mollitia in animi asperiores. | 14 | 14 | 26
 55006614 | 9999000 | Dr. Josefina Conroy | Port Jimmy FL | 2019-04-15 | You can't connect the bandwidth without generating the digital THX application! | Et quos quibusdam. | 30 | 24 | 38
-(2 rows)
 
-Time: 1131.243 ms (00:01.131)
+Time: 2.990 ms
+
+`select * from reviews where _id=55006613;`
+
+> Total query time: 1.068 msec. Rows affected 1
+
+> Output:
+> \_id | itemid | name | location | posttime | title | comment | likes | dislike | star
+> ----------+---------+---------------+-------------------------+------------+-------------------------------------------------------------------------------------+--------------------------------------------------+-------+---------+------
+> 55006613 | 9999000 | Gayle Cormier | North Deborahborough AL | 2018-07-19 | connecting the port won't do anything, we need to parse the multi-byte EXE program! | Qui ipsum in harum mollitia in animi asperiores. | 14 | 14 | 26
+> (1 row)
+
+Time: 1.068 ms
 
 ## Cassandra
 
