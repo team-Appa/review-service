@@ -1,0 +1,10 @@
+2020-07-13 23:40:12 INFO  Operation directory: /Users/jingchen/Documents/HackReactor/Project/SDC/review-service/logs/LOAD_20200713-234012-626059
+2020-07-13 23:40:14 INFO  Operation LOAD_20200713-234012-626059 completed successfully in 0 seconds.
+2020-07-13 23:40:16 INFO  Final stats:
+2020-07-13 23:40:16 INFO  Records: total: 9, successful: 9, failed: 0
+2020-07-13 23:40:16 INFO  Batches: total: 2, size: 4.50 mean, 3 min, 6 max
+2020-07-13 23:40:16 INFO  Memory usage: used: 51 MB, free: 63 MB, allocated: 114 MB, available: 1,820 MB, total gc count: 6, total gc time: 59 ms
+2020-07-13 23:40:16 INFO  Writes: total: 9, successful: 9, failed: 0, in-flight: 0
+2020-07-13 23:40:16 INFO  Throughput: 4 writes/second
+2020-07-13 23:40:16 INFO  Latencies: mean 9.57, 75p 13.43, 99p 13.43, 999p 13.43 milliseconds
+2020-07-13 23:40:16 INFO  Last processed positions can be found in positions.txt

@@ -1,0 +1,12 @@
+2020-07-13 20:23:33 INFO  Operation directory: /Users/jingchen/Documents/HackReactor/Project/SDC/review-service/logs/LOAD_20200713-202333-699778
+2020-07-13 20:23:35 ERROR Operation LOAD_20200713-202333-699778 failed: Schema mapping entry col1 doesn't match any column found in table reviews.
+com.datastax.dsbulk.commons.config.BulkConfigurationException: Schema mapping entry col1 doesn't match any column found in table reviews
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.lambda$validateAllFieldsPresent$22(SchemaSettings.java:898)
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.validateAllFieldsPresent(SchemaSettings.java:893) [5 skipped]
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.createFieldsToVariablesMap(SchemaSettings.java:714)
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.prepareStatementAndCreateMapping(SchemaSettings.java:568)
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.createRecordMapper(SchemaSettings.java:432)
+	at com.datastax.dsbulk.engine.LoadWorkflow.init(LoadWorkflow.java:149)
+	at com.datastax.dsbulk.engine.DataStaxBulkLoader$WorkflowThread.run(DataStaxBulkLoader.java:127)
+2020-07-13 20:23:37 INFO  Final stats:
+2020-07-13 20:23:37 INFO  Last processed positions can be found in positions.txt

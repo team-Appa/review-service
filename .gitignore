@@ -17,3 +17,4 @@ db/reviews.csv
 db/reviews2.csv
 db/reviews3.csv
 .env
+db/logs/

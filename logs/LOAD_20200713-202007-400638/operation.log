@@ -1,0 +1,8 @@
+2020-07-13 20:20:07 INFO  Operation directory: /Users/jingchen/Documents/HackReactor/Project/SDC/review-service/logs/LOAD_20200713-202007-400638
+2020-07-13 20:20:08 ERROR Operation LOAD_20200713-202007-400638 failed: Invalid schema.mapping: the following variables are mapped to more than one field: col1. Please review schema.mapping for duplicates.
+com.datastax.dsbulk.commons.config.BulkConfigurationException: Invalid schema.mapping: the following variables are mapped to more than one field: col1. Please review schema.mapping for duplicates.
+	at com.datastax.dsbulk.engine.internal.schema.MappingInspector.checkDuplicates(MappingInspector.java:467)
+	at com.datastax.dsbulk.engine.internal.schema.MappingInspector.<init>(MappingInspector.java:131)
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.init(SchemaSettings.java:334)
+	at com.datastax.dsbulk.engine.LoadWorkflow.init(LoadWorkflow.java:124)
+	at com.datastax.dsbulk.engine.DataStaxBulkLoader$WorkflowThread.run(DataStaxBulkLoader.java:127)

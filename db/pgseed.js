@@ -1,13 +1,15 @@
-require('dotenv').config();
-
 const path = require('path');
+require('dotenv').config({
+  path: path.resolve(__dirname, '../.env'),
+});
+
 const { Pool, Client } = require('pg');
 // pools will use environment variables
 // for connection information
 const client = new Client({
   user: process.env.PGUSER,
   host: process.env.PGHOST,
-  database: 'testdb',
+  database: 'postgres',
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT,
 });
@@ -19,31 +21,34 @@ client.on('error', (err, client) => {
 });
 
 var path1 = path.resolve(__dirname, './reviews.csv');
-console.log(path1);
+
 var path2 = path.resolve(__dirname, './reviews2.csv');
 var path3 = path.resolve(__dirname, './reviews3.csv');
 client.query(
   `DROP TABLE IF EXISTS reviews;
   CREATE TABLE reviews (
-      _id SERIAL PRIMARY KEY,
+      _id SERIAL,
       itemid int,
       name text,
       location text,
+      posttime date,
       title text,
       comment text,
       likes int,
       dislike int,
-      star int);
+      star int
+      CONSTRAINT reviews_pk PRIMARY KEY (_id,itemid)
+      );
 
-  COPY reviews(itemid,name,location,title,comment,likes,dislike,star)
+  COPY reviews(itemid,name,location,posttime,title,comment,likes,dislike,star)
   FROM '${path1}'
   DELIMITER ';' CSV;
 
-  COPY reviews(itemid,name,location,title,comment,likes,dislike,star)
+  COPY reviews(itemid,name,location,posttime,title,comment,likes,dislike,star)
   FROM '${path2}'
   DELIMITER ';' CSV;
 
-  COPY reviews(itemid,name,location,title,comment,likes,dislike,star)
+  COPY reviews(itemid,name,location,posttime,title,comment,likes,dislike,star)
   FROM '${path3}'
   DELIMITER ';' CSV;
       `,

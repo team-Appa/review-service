@@ -8,10 +8,13 @@ const reviewEntry = (id) => {
   var array = [];
   var randReviews = random.int(1, 10);
   for (var i = 0; i < randReviews; i++) {
+    var day = faker.date.past(2);
+    var fulldate = day.getFullYear() + '-' + getMonth(day) + '-' + getDate(day);
     var reviewEntry = {
       itemid: id,
       name: faker.name.findName(),
       location: faker.fake('{{address.city}} {{address.stateAbbr}}'),
+      posttime: fulldate,
       title: faker.hacker.phrase(),
       comment: faker.lorem.sentence(),
       likes: random.int(0, 51),
@@ -23,11 +26,28 @@ const reviewEntry = (id) => {
   return array;
 };
 
+var getMonth = (date) => {
+  var result = date.getMonth() + 1;
+  if (result < 10) {
+    result = '0' + result;
+  }
+  return result;
+};
+
+var getDate = (date) => {
+  var result = date.getDate();
+  if (result < 10) {
+    result = '0' + result;
+  }
+  return result;
+};
+
 var convertToCSV = (array) => {
   var header = [
     'itemid',
     'name',
     'location',
+    'posttime',
     'title',
     'comment',
     'likes',
@@ -56,7 +76,7 @@ var writeReviews = fs
   .on('finish', () => console.log('Data generation finished'))
   .on('error', (err) => console.log(err));
 
-var i = 8994000;
+var i = 8993000;
 var start = Date.now();
 write = () => {
   let ok = true;

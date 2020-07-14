@@ -1,0 +1,11 @@
+2020-07-13 20:12:14 INFO  Operation directory: /Users/jingchen/Documents/HackReactor/Project/SDC/review-service/logs/LOAD_20200713-201213-960076
+2020-07-13 20:12:15 ERROR Operation LOAD_20200713-201213-960076 failed: Schema mapping contains named fields, but connector only supports indexed fields, please enable support for named fields in the connector, or alternatively, provide an indexed mapping of the form: '0=col1,1=col2,...'.
+com.datastax.dsbulk.commons.config.BulkConfigurationException: Schema mapping contains named fields, but connector only supports indexed fields, please enable support for named fields in the connector, or alternatively, provide an indexed mapping of the form: '0=col1,1=col2,...'
+	at com.datastax.dsbulk.engine.internal.schema.MappingInspector.visitMapping(MappingInspector.java:200)
+	at com.datastax.dsbulk.engine.internal.schema.MappingInspector.visitMapping(MappingInspector.java:55)
+	at com.datastax.dsbulk.engine.generated.schema.MappingParser$MappingContext.accept(MappingParser.java:141)
+	at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)
+	at com.datastax.dsbulk.engine.internal.schema.MappingInspector.<init>(MappingInspector.java:123)
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.init(SchemaSettings.java:334)
+	at com.datastax.dsbulk.engine.LoadWorkflow.init(LoadWorkflow.java:124)
+	at com.datastax.dsbulk.engine.DataStaxBulkLoader$WorkflowThread.run(DataStaxBulkLoader.java:127)

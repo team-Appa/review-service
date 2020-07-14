@@ -1,0 +1,12 @@
+2020-07-13 23:35:40 INFO  Operation directory: /Users/jingchen/Documents/HackReactor/Project/SDC/review-service/logs/LOAD_20200713-233540-503265
+2020-07-13 23:35:41 ERROR Operation LOAD_20200713-233540-503265 failed: Schema mapping entry tile doesn't match any column found in table review_by_itemid.
+com.datastax.dsbulk.commons.config.BulkConfigurationException: Schema mapping entry tile doesn't match any column found in table review_by_itemid
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.lambda$validateAllFieldsPresent$22(SchemaSettings.java:898)
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.validateAllFieldsPresent(SchemaSettings.java:893) [5 skipped]
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.createFieldsToVariablesMap(SchemaSettings.java:714)
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.prepareStatementAndCreateMapping(SchemaSettings.java:568)
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.createRecordMapper(SchemaSettings.java:432)
+	at com.datastax.dsbulk.engine.LoadWorkflow.init(LoadWorkflow.java:149)
+	at com.datastax.dsbulk.engine.DataStaxBulkLoader$WorkflowThread.run(DataStaxBulkLoader.java:127)
+2020-07-13 23:35:43 INFO  Final stats:
+2020-07-13 23:35:43 INFO  Last processed positions can be found in positions.txt
