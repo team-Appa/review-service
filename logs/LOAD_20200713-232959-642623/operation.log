@@ -1,0 +1,7 @@
+2020-07-13 23:29:59 INFO  Operation directory: /Users/jingchen/Documents/HackReactor/Project/SDC/review-service/logs/LOAD_20200713-232959-642623
+2020-07-13 23:30:00 ERROR Operation LOAD_20200713-232959-642623 failed: Table reviews does not exist.
+com.datastax.dsbulk.commons.config.BulkConfigurationException: Table reviews does not exist
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.locateTable(SchemaSettings.java:780)
+	at com.datastax.dsbulk.engine.internal.settings.SchemaSettings.init(SchemaSettings.java:210)
+	at com.datastax.dsbulk.engine.LoadWorkflow.init(LoadWorkflow.java:124)
+	at com.datastax.dsbulk.engine.DataStaxBulkLoader$WorkflowThread.run(DataStaxBulkLoader.java:127)
