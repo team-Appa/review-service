@@ -1,8 +1,8 @@
+require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
-
 const client = require('../db/index.js');
 // const Review = require('../db/comments.js');
 
@@ -38,11 +38,10 @@ app.put('/api/reviews/:reviewid', (req, res) => {
   const itemid = req.query.id;
   const reviewid = req.params.reviewid;
   var params = req.body.like ? [1, itemid, reviewid] : [-1, itemid, reviewid];
-  var query =
-    'update reviews set likes=likes+$1 where itemid=$2 and _id=$3 RETURNING *';
+  var query = 'update reviews set likes=likes+$1 where itemid=$2 and _id=$3';
   client
     .query(query, params)
-    .then((data) => res.status(200).json(data.rows))
+    .then((data) => res.sendStatus(200))
     .catch((err) => res.status(404).json(err));
 });
 

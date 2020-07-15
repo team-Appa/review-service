@@ -56,8 +56,8 @@ class App extends React.Component {
 
   updateLikes(data) {
     const queryID = this.getQueries();
-
-    fetch(`http://localhost:3004/api/reviews?id=${queryID}`, {
+    const reviewid = data._id;
+    fetch(`http://localhost:3004/api/reviews/${reviewid}?id=${queryID}`, {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
