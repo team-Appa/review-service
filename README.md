@@ -27,7 +27,7 @@ https://github.com/Team-Katara/Joel_Proxy
 1. [Development](#development)
 1. [Server Endpoints](#Server-Endpoints)
    - [GET /api/reviews](#GET)
-   - [PATCH /api/reviews](#PATCH)
+   - [GET /api/reviews/:reviewid](#GETONE)
    - [PUT /api/reviews/:reviewid](#PUT)
    - [POST /api/reviews](#POST)
    - [DELETE /api/reviews/:reviewid](#DELETE)
@@ -74,22 +74,20 @@ npm run build
 
 ### GET
 
-Getting reviews for an id : /api/reviews?id={}
+Getting reviews for an itemid : /api/reviews?id={}
 
 - GET Request
 - Expected Queries: id
-- Responses with randomly generated 14 to 20 reviews
+- Responses with randomly generated 2 to 8 reviews
 
-### PATCH
+### GETONE
 
-Updating like/dislike : /api/reviews?id={}
+Getting reviews for an itemid : /api/reviews/:reviewid?id={}
 
-- PATCH Request
+- GET Request
 - Expected Queries: id
-- Expected Body:
-  => \_id: Associated \_id with an individual review
-  => like: like count for an individual review
-  => dislike: dislike count for an individual review
+- Eepected Params: reviewid
+- Responses with one review according to the reviewid
 
 ### PUT
 

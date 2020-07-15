@@ -96,3 +96,5 @@ write = () => {
   }
 };
 write();
+
+module.export = datagen;
