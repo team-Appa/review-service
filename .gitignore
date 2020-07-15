@@ -19,3 +19,5 @@ db/reviews3.csv
 .env
 db/logs/
 logs/
+newrelic.js
+newrelic_agent.log
