@@ -2,7 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-import { SearchsSection, SearchWrapper, SearchButton, Numbers, SearchBar, ClearButton } from '../../styled/components.jsx';
+import {
+  SearchsSection,
+  SearchWrapper,
+  SearchButton,
+  Numbers,
+  SearchBar,
+  ClearButton,
+} from '../../styled/components.jsx';
 import { FaSearch } from 'react-icons/fa';
 
 class Search extends React.Component {
@@ -18,7 +25,7 @@ class Search extends React.Component {
   updateSearchedKeyWord(event) {
     // console.log(this.state.searched);
     this.setState({
-      searched: event
+      searched: event,
     });
   }
 
@@ -43,7 +50,7 @@ class Search extends React.Component {
   onClickingClear() {
     ReactDOM.findDOMNode(this.refs.search).value = '';
     this.setState({
-      searched: ''
+      searched: '',
     });
 
     this.filterListOfReviews('', this.props.reviews);
@@ -53,24 +60,34 @@ class Search extends React.Component {
     return (
       <SearchsSection>
         <SearchWrapper>
-
           <Numbers>
-            Reviewed by {this.props.reviews.length === this.props.full ? this.props.full - 1 : this.props.reviews.length } customers
+            Reviewed by{' '}
+            {this.props.reviews.length === this.props.full
+              ? this.props.full
+              : this.props.reviews.length}{' '}
+            customers
           </Numbers>
 
-          <SearchBar onChange={(e) => this.updateSearchedKeyWord(e.target.value)}>
+          <SearchBar
+            onChange={(e) => this.updateSearchedKeyWord(e.target.value)}
+          >
             <input
-              type='text' placeholder='Enter Search Terms' ref='search'
-              style={{width: '100%'}} >
-            </input>
-            <ClearButton onClick={() => this.onClickingClear()} > X </ClearButton>
+              type="text"
+              placeholder="Enter Search Terms"
+              ref="search"
+              style={{ width: '100%' }}
+            ></input>
+            <ClearButton onClick={() => this.onClickingClear()}>
+              {' '}
+              X{' '}
+            </ClearButton>
             <SearchButton onClick={() => this.onClickingSearch()}>
-              <FaSearch style={{transform: 'rotate(90deg)', padding: '5px'}}/>
+              <FaSearch
+                style={{ transform: 'rotate(90deg)', padding: '5px' }}
+              />
             </SearchButton>
           </SearchBar>
-
         </SearchWrapper>
-
       </SearchsSection>
     );
   }

@@ -5,7 +5,6 @@ import ReviewList from './ReviewList.jsx';
 import Search from './search/Search.jsx';
 import Pagination from './pagination.jsx';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +15,7 @@ class App extends React.Component {
       prev: false,
       next: true,
       firstComment: 1,
-      lastComment: 5
+      lastComment: 5,
     };
 
     this.getComments = this.getComments.bind(this);
@@ -38,39 +37,40 @@ class App extends React.Component {
     fetch(`http://localhost:3004/api/reviews?id=${queryID}`, {
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json',
       },
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
         this.setState({
           reviews: data,
           fullReviews: data,
-          pageReview: data.slice(0, 5)
+          pageReview: data.slice(0, 5),
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('Error making GET request ', err);
       });
   }
 
   updateLikes(data) {
     const queryID = this.getQueries();
-
-    fetch(`http://localhost:3004/api/reviews?id=${queryID}`, {
-      method: 'PATCH',
+    const reviewid = data._id;
+    fetch(`http://localhost:3004/api/reviews/${reviewid}?id=${queryID}`, {
+      method: 'PUT',
       body: JSON.stringify(data),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     })
-      .then(res => res.json())
-      .then(result => {
+      .then((res) => res.json())
+      .then((result) => {
         // console.log(result);
         this.getComments();
         // console.log(this.state.reviews);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('Error making PATCH request', err);
       });
   }
@@ -99,16 +99,15 @@ class App extends React.Component {
       this.setState({
         reviews: oldList,
         pageReview: oldList.slice(0, 5),
-        next: true
+        next: true,
       });
     } else {
       this.setState({
         reviews: newList,
         pageReview: newList,
-        next: pageButtons
+        next: pageButtons,
       });
     }
-
   }
 
   prevButton() {
@@ -123,15 +122,15 @@ class App extends React.Component {
         next: true,
         firstComment: newFirst,
         lastComment: newLast,
-        pageReview: fullReviews.slice(newFirst, newLast + 1)
+        pageReview: fullReviews.slice(newFirst, newLast + 1),
       });
     } else {
-    // else update next = false, pageReview (lastComment + 1 to limit),
+      // else update next = false, pageReview (lastComment + 1 to limit),
       this.setState({
         prev: false,
         firstComment: 1,
         lastComment: 5,
-        pageReview: fullReviews.slice(0, 5)
+        pageReview: fullReviews.slice(0, 5),
       });
     }
   }
@@ -151,7 +150,7 @@ class App extends React.Component {
         pageReview: fullReviews.slice(newFirst, newLast + 1),
       });
     } else {
-    // else update next = false, pageReview (lastComment + 1 to limit),
+      // else update next = false, pageReview (lastComment + 1 to limit),
       this.setState({
         next: false,
         firstComment: newFirst,
@@ -162,22 +161,41 @@ class App extends React.Component {
   }
 
   render() {
-    const { fullReviews, reviews, next, prev, firstComment, lastComment, pageReview } = this.state;
+    const {
+      fullReviews,
+      reviews,
+      next,
+      prev,
+      firstComment,
+      lastComment,
+      pageReview,
+    } = this.state;
     return (
       <div>
         <Search
-          full={fullReviews.length} reviews={reviews} filterListOfReviews={this.filterListOfReviews}
+          full={fullReviews.length}
+          reviews={reviews}
+          filterListOfReviews={this.filterListOfReviews}
         />
-        <ReviewList id='top' reviews={pageReview} updateLikes={this.updateLikes} />
-        <Pagination nextB={this.nextButton} prevB={this.prevButton} prev={prev}
-          next={next} first={firstComment} last={lastComment} />
+        <ReviewList
+          id="top"
+          reviews={pageReview}
+          updateLikes={this.updateLikes}
+        />
+        <Pagination
+          nextB={this.nextButton}
+          prevB={this.prevButton}
+          prev={prev}
+          next={next}
+          first={firstComment}
+          last={lastComment}
+        />
       </div>
     );
   }
 }
 
 export default App;
-
 
 // Pagination Idea :
 

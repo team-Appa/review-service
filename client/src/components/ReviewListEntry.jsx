@@ -4,38 +4,48 @@ import moment from 'moment';
 import StarRatings from 'react-star-ratings';
 import { FaThumbsUp } from 'react-icons/fa';
 
-import { Section, Wrapper, Comment, CommentOwner, Time, Helpful, Thumbs, Flag, StarNumber } from '../styled/components.jsx';
+import {
+  Section,
+  Wrapper,
+  Comment,
+  CommentOwner,
+  Time,
+  Helpful,
+  Thumbs,
+  Flag,
+  StarNumber,
+} from '../styled/components.jsx';
 
 const Button = styled.button`
   flex: 0;
   cursor: pointer;
-  pointer-events: ${props => (props.clicked ? 'none' : 'auto')};
+  pointer-events: ${(props) => (props.clicked ? 'none' : 'auto')};
   padding: 15px;
-  color: ${props => (props.like ? 'white' : 'grey')};
-  background-color: ${props => (props.like ? 'red' : 'transparent')};
-  opacity: ${props => ( props.clicked ? '0.4' : '1' )};
+  color: ${(props) => (props.like ? 'white' : 'grey')};
+  background-color: ${(props) => (props.like ? 'red' : 'transparent')};
+  opacity: ${(props) => (props.clicked ? '0.4' : '1')};
   font-weight: bold;
   border: 1px solid #ccc;
   &:hover {
     color: #cd2418;
     background-color: #f2f2f2;
-  };
+  }
 `;
 
 const Disbutton = styled.button`
   flex: 0;
   cursor: pointer;
-  pointer-events: ${props => (props.clicked ? 'none' : 'auto')};
+  pointer-events: ${(props) => (props.clicked ? 'none' : 'auto')};
   padding: 15px;
-  color: ${props => (props.dislike ? 'white' : 'grey')};
-  background-color: ${props => (props.dislike ? 'red' : 'transparent')};
-  opacity: ${props => ( props.clicked ? '0.4' : '1' )};
+  color: ${(props) => (props.dislike ? 'white' : 'grey')};
+  background-color: ${(props) => (props.dislike ? 'red' : 'transparent')};
+  opacity: ${(props) => (props.clicked ? '0.4' : '1')};
   font-weight: bold;
   border: 1px solid #ccc;
   &:hover {
     color: #cd2418;
     background-color: #f2f2f2;
-  };
+  }
 `;
 // change cursor and clickable based on clicked props
 
@@ -45,23 +55,23 @@ class ReviewListEntry extends React.Component {
     this.state = {
       like: false,
       dislike: false,
-      clicked: false
+      clicked: false,
     };
 
     this.review = props.review;
-    this.time = moment(this.review.timestamp).fromNow();
+    this.time = moment(this.review.posttime).fromNow();
     this.updateLikes = props.updateLikes;
   }
 
   likeHandler() {
     this.setState({
       like: true,
-      clicked: true
+      clicked: true,
     });
 
     const data = {
       _id: this.review._id,
-      like: this.review.like
+      like: this.review.likes,
     };
 
     this.updateLikes(data);
@@ -70,12 +80,12 @@ class ReviewListEntry extends React.Component {
   dislikeHandler() {
     this.setState({
       dislike: true,
-      clicked: true
+      clicked: true,
     });
 
     const data = {
       _id: this.review._id,
-      dislike: this.review.dislike
+      dislike: this.review.dislike,
     };
 
     this.updateLikes(data);
@@ -84,11 +94,14 @@ class ReviewListEntry extends React.Component {
   render() {
     return (
       <Section>
-
         <Wrapper>
           <StarRatings
-            numberOfSars={5} rating={this.review.star} starDimension="13px"
-            starSpacing="1px" starRatedColor='orange' starEmptyColor='#b3b3b3'
+            numberOfSars={5}
+            rating={this.review.star}
+            starDimension="13px"
+            starSpacing="1px"
+            starRatedColor="orange"
+            starEmptyColor="#b3b3b3"
           />
           <StarNumber>{this.review.star}</StarNumber>
           {this.review.title}
@@ -108,18 +121,17 @@ class ReviewListEntry extends React.Component {
         </Wrapper>
 
         <Wrapper>
-          <Helpful>
-            Was this review helpful to you?
-          </Helpful>
+          <Helpful>Was this review helpful to you?</Helpful>
           <Thumbs>
             <Button
               like={this.state.like}
               clicked={this.state.clicked}
               onClick={() => {
                 this.likeHandler();
-                this.review.like += 1;
-              }}>
-              < FaThumbsUp /> {this.review.like}
+                this.review.likes += 1;
+              }}
+            >
+              <FaThumbsUp /> {this.review.likes}
             </Button>
             <Disbutton
               dislike={this.state.dislike}
@@ -127,19 +139,21 @@ class ReviewListEntry extends React.Component {
               onClick={() => {
                 this.dislikeHandler();
                 this.review.dislike += 1;
-              }}>
-              < FaThumbsUp style={{transform: 'rotate(180deg)'}}/> {this.review.dislike}
+              }}
+            >
+              <FaThumbsUp style={{ transform: 'rotate(180deg)' }} />{' '}
+              {this.review.dislike}
             </Disbutton>
           </Thumbs>
           <Flag>
-            <a style={{color: '#cd2418'}} href='#'>Flag this review</a>
+            <a style={{ color: '#cd2418' }} href="#">
+              Flag this review
+            </a>
           </Flag>
         </Wrapper>
-
       </Section>
     );
   }
 }
 
 export default ReviewListEntry;
-

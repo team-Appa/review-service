@@ -1,5 +1,5 @@
 {
-  "name": "joel_service",
+  "name": "review_service",
   "version": "1.0.0",
   "description": "> Project description",
   "main": ".eslintrc.js",
@@ -8,8 +8,7 @@
     "build": "webpack -d --watch",
     "start": "nodemon server/server.js",
     "datagen": "node ./db/dataGeneration.js",
-    "db:setuppg": "node ./db/pgseed.js",
-    "db:setupcass": "node ./db/cassconnection.js"
+    "db:setuppg": "node ./db/pgseed.js"
   },
   "repository": {
     "type": "git",
@@ -40,6 +39,7 @@
     "eslint-config-hackreactor": "github:reactorcore/eslint-config-hackreactor",
     "jest": "^26.0.1",
     "jest-fetch-mock": "^3.0.3",
+    "newrelic": "^6.11.0",
     "node-fetch": "^2.6.0",
     "react-test-renderer": "^16.13.1",
     "webpack": "^4.43.0",
