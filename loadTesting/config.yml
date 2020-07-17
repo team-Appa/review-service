@@ -1,0 +1,21 @@
+config:
+  target: 'http://localhost:3004'
+  phases:
+    - duration: 60
+      arrivalRate: 1
+      rampTo: 10
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 100
+    - duration: 300
+      arrivalRate: 100
+      rampTo: 1000
+    - duration: 300
+      arrivalRate: 1000
+  processor: './generateRandomId.js'
+scenarios:
+  - name: 'Get all reviews for a random item and like one of them'
+    flow:
+      - function: 'generateRandomId'
+      - get:
+          url: '/api/reviews/?id={{id}}'
