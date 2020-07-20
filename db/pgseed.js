@@ -18,7 +18,7 @@ client.query(
       comment text,
       likes int,
       dislike int,
-      star int
+      star int,
       CONSTRAINT reviews_pk PRIMARY KEY (_id)
       );
   CREATE INDEX item_idx ON reviews (itemid);

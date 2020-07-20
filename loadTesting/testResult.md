@@ -34,6 +34,8 @@ export default function () {
 
 ## Local Service
 
+### Testing one api endpoint, /api/reviews/?id={randomId}, retrieve reviews for the same itemid
+
 ### - 500 max vus:
 
 > Output:
