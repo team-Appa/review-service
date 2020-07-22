@@ -6,8 +6,8 @@ module.exports = {
     var query = 'select * from reviews where itemid=$1';
     client
       .query(query, [itemid])
-      .then((data) => res.status(200).json(data.rows))
-      .catch((err) => res.status(404).json(err));
+      .then((data) =>{ res.status(200).json(data.rows)})
+      .catch((err) =>{ res.status(404).send("database query error")});
   },
 
   addLikes: (req, res) => {
