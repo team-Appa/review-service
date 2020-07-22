@@ -3,7 +3,7 @@ require('dotenv').config({
   path: path.resolve(__dirname, '../.env'),
 });
 
-const { Pool, Client } = require('pg');
+const { Client } = require('pg');
 // pools will use environment variables
 // for connection information
 const client = new Client({
