@@ -33,8 +33,7 @@ class App extends React.Component {
   // get request to server
   getComments() {
     const queryID = this.getQueries();
-    // `http://localhost:3001/api/reviews?id=${queryID}`
-    fetch(`http://localhost:3004/api/reviews?id=${queryID}`, {
+    fetch(`http://54.144.251.21:3004/api/reviews?id=${queryID}`, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -57,7 +56,7 @@ class App extends React.Component {
   updateLikes(data) {
     const queryID = this.getQueries();
     const reviewid = data._id;
-    fetch(`http://localhost:3004/api/reviews/${reviewid}?id=${queryID}`, {
+    fetch(`http://54.144.251.21:5432/api/reviews/${reviewid}?id=${queryID}`, {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {

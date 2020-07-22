@@ -3,15 +3,15 @@ require('dotenv').config({
   path: path.resolve(__dirname, '../.env'),
 });
 
-const { Pool, Client } = require('pg');
+const { Client } = require('pg');
 // pools will use environment variables
 // for connection information
 const client = new Client({
-  user: process.env.PGUSER,
-  host: process.env.PGHOST,
+  user: 'jingchen',
+  host: '54.175.198.90',
   database: 'postgres',
-  password: process.env.PGPASSWORD,
-  port: process.env.PGPORT,
+  password: '1234',
+  port: 5432,
 });
 
 client.connect(() => console.log('database connected'));
