@@ -1,10 +1,7 @@
-# Product Reviews
+# Katar-a Center
 
-> Product Reviews module is a clone version of Guitar Center's review module. The review module includes the following:
-
-1. Search functionality to filter reviews based on searched keyword.
-1. Review list that displays all reviews.
-1. Pagination
+Web application for guitar shopping.
+This is the customer reviews module in this project
 
 ## Usage
 
@@ -14,12 +11,12 @@
 
 Services
 
-- Product Browser: https://github.com/Team-Katara/john-service
-- Recently Viewed Items: https://github.com/Team-Katara/Shraya-Service
-- Similar Items: https://github.com/Team-Katara/Kana-service
+- Product Browser: https://github.com/team-Appa/image-browser
+- Recently Viewed Items: https://github.com/team-Appa/photo-carousel
+- Similar Items: https://github.com/team-Appa/similaritems-service
 
-Proxy
-https://github.com/Team-Katara/Joel_Proxy
+Proxy:
+https://github.com/team-Appa/jing-proxy
 
 ## Table of Contents
 
@@ -51,7 +48,7 @@ npm install
 Within the root directory:
 
 ```sh
-npm run db:setup
+npm run db:setuppg
 ```
 
 ### Starting Server
@@ -120,3 +117,7 @@ Delete a review by its id : /api/reviews/:reviewid?id={}
 
 - Expected Queries: id
 - Expected Params: reviewid
+
+## Authors
+
+- **Jing Chen** - [Katar-a Center-Review Module](https://github.com/team-Appa/review-service)
