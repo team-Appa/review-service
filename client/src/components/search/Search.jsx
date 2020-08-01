@@ -23,17 +23,14 @@ class Search extends React.Component {
   }
 
   updateSearchedKeyWord(event) {
-    // console.log(this.state.searched);
     this.setState({
       searched: event,
     });
   }
 
   onClickingSearch() {
-    // console.log(this.props.reviews[0]);
     const query = this.state.searched.toLowerCase();
 
-    // console.log(this.props.reviews);
     const newList = this.props.reviews.reduce((acc, review) => {
       const comment = review.comment.toLowerCase();
 
@@ -43,7 +40,6 @@ class Search extends React.Component {
       return acc;
     }, []);
 
-    // console.log(newList);
     this.filterListOfReviews(query, newList);
   }
 

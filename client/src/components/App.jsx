@@ -65,9 +65,7 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then((result) => {
-        // console.log(result);
         this.getComments();
-        // console.log(this.state.reviews);
       })
       .catch((err) => {
         console.log('Error making PATCH request', err);
