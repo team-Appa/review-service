@@ -1,7 +1,8 @@
 # Katar-a Center
 
 Web application for guitar shopping.
-This is the customer reviews module in this project
+This is the customer reviews module in this project.
+This a project mainly focuson backend optimization. With load-balancer and database optimization. This service can achieve 1000 RPS (requests per second) and 0% error rate on AWS EC2 t2.micro instace.
 
 ## Usage
 
